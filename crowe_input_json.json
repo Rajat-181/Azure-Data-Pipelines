@@ -1,0 +1,16 @@
+{
+  "pipeline": {
+    "name": "query"
+  },
+  "transform": {
+    "image": "dockerrepodemo.azurecr.io/crowe_cron:v2",
+    "cmd": [ "python" , "crowe_input.py" ],
+    "image_pull_secrets": ["acr-auth"]
+  },
+  "input": {
+    "cron": {
+      "name": "tick",
+      "spec": "@every 15s"
+    }
+  }
+}
