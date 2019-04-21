@@ -1,0 +1,18 @@
+{
+  "pipeline": {
+    "name": "chg"
+  },
+  "transform": {
+    "image": "dockerrepodemo.azurecr.io/chg_validate_image:v4",
+    "cmd": [ "python","chg_validate.py" ],
+    "image_pull_secrets": ["acr-auth"]
+  },
+  "job_timeout" : "1m",
+  "input": {
+    "atom": {
+      "repo": "query",
+      "branch": "master",
+      "glob": "/*CHG.csv"
+    }
+  }
+}
